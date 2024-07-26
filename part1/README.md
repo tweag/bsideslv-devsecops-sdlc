@@ -11,35 +11,23 @@ A number of technologies are used during this part of the workshop including:
 
 3. SonarCloud: https://sonarcloud.io/
 
-4. GitHub: https://github.com/ and GitHub CodeQL: https://codeql.github.com/docs/codeql-overview/ 
+4. GitHub: https://github.com/
 
-5. AWS Labs git-secret: https://github.com/awslabs/git-secrets
+5. Talisman: https://github.com/thoughtworks/talisman
 
-6. Talisman: https://github.com/thoughtworks/talisman
+6. .gitignore files: https://git-scm.com/docs/gitignore
 
-7. .gitignore files: https://git-scm.com/docs/gitignore
+7. BFG repo-cleaner: https://rtyley.github.io/bfg-repo-cleaner/ 
 
-8. BFG repo-cleaner: https://rtyley.github.io/bfg-repo-cleaner/ 
-
-These can be downloaded/setup in advance of completing the workshop, or as you go. Some applications such as BFG also require you to be able to execute Java on your machine. 
-
-Examples in this workshop use commandline prompts that should work on Linux, MacOS and Windows Subsystem for Linux (WSL)
+These can be downloaded/setup in advance of completing the workshop, or as you go. Some tools are automatically instaleld into Codespace
 
 The first account you will need if you have not created it already is a GitHub one. Use the link above to sign up.
 
 Once this created, you can now fork this repository.
 
-Follow the instructions below, to fork https://github.com/tweag/dev-sec-ops-workshop
-
 https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
 
-If you do not have Git installed locally, also ensure you set this up:
-
-https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
-
-Once both of these tasks are complete, you can clone the repository:
-
-`git clone <repo name>`
+Next we can create a new Codespace from the `main` branch. 
 
 With the code now located on your local machine, you are ready to start.
 
@@ -66,8 +54,7 @@ Supported IDEs include:
 
 4. Eclipse 
 
-During this workshop we use VS Code for examples, but this can be replaced with the supported IDE 
-of your choice. 
+During this workshop we use VS Code within Codespace for examples.
 
 SonarLint has a number of features including:
 
@@ -77,15 +64,15 @@ SonarLint has a number of features including:
 * Secrets Detection 
 * Vulnerability detection 
 
-Download and install the plugin into your IDE before proceeding. 
+Download and install the plugin into your Codespace IDE before proceeding. 
 
-For this demo we also recommend creating a SonarCloud account. You can do this via your GitHub user at:
+For this demo we also optionally recommend creating a SonarCloud account. You can do this via your GitHub user at:
 
 https://sonarcloud.io/
 
 SonarLint will still work without a SonarCloud account, but has fewer features. 
 
-Once you have an account, make a note of your `Organization` name from the `Organizations` tab in SonarCloud.
+If you create a SonarCloud account, once you have an account, make a note of your `Organization` name from the `Organizations` tab in SonarCloud.
 
 Next generate a token. Go to the `Security` tab and generate a new token, call it `dev-sec-ops-demo`.
 
@@ -125,6 +112,10 @@ Let's take a look at an alernative tool to SonarLint which can also detect issue
 ### CodeQL
 
 We're now going to switch over to using another tool that can aid in detecting security issues in our source code. This tool is called CodeQL.
+
+For the purposes of the workshop we will demo and walk through this. However after the workshop if you wish to try this tool for yourself we have provided instructions on how to install it.
+
+#### Post-workshop CodeQL setup
 
 The first step is to install the CLI tools prior to adding in the VS Code plugin.
 
@@ -288,7 +279,7 @@ https://github.com/features/copilot/plans
 
 A quick start guide is provided here: https://docs.github.com/en/copilot/quickstart
 
-For this course, we are interested in installing the Copilot extension in VS Code.
+For this course, we are interested in installing the Copilot extension in VS Code within Codespace.
 
 1. Install the plugin from the marketplace: https://marketplace.visualstudio.com/items?itemName=GitHub.copilot
 
@@ -361,81 +352,11 @@ So in addition to detecting and fixing issues from the IDE, what else can we do 
 Having demonstrated how we can fix security issues as we go, we next look at mechanisms to prevent code with vulnerabilities, such as hard coded secrets being commited 
 to the repository. To do this we will show you how to use pre-commit hooks.
 
-### AWS Labs git-secrets 
-
-In the `.ini` file you will remember we have provided an example of a hard coded (dummy) AWS API key. 
-
-The AWS git-secrets tool can be used to scan files locally for hardcoded keys in order to alert the engineer.
-
-You can clone the repository from the following location:
-
-https://github.com/awslabs/git-secrets
-
-The `README` explains a number of mechanisms to install git-secrets based upon your OS.
-
-For each repository you will need to install the hooks. Once git-secrets is installed, in this repository install the hooks via:
-
-```console
-
-git secrets -- install
-
-```
-
-Next let's register common AWS patterns for scanning:
-
-```console
-
- git secrets --register-aws
-
-```
-
-It is also possible to add specific strings that represent common patterns e.g. keys in a repo:
-
-```console 
-
-git secrets --add '[A-Z0-9]{20}'
-
-```
-
-We can run a scan as follows:
-
-```console 
-
-git secrets --scan
-
-```
-
-You should now see output similar to the following:
-
-```console
-[ERROR] Matched one or more prohibited patterns
-
-Possible mitigations:
-- Mark false positives as allowed using: git config --add secrets.allowed ...
-- Mark false positives as allowed by adding regular expressions to .gitallowed at repository's root directory
-- List your configured patterns: git config --get-all secrets.patterns
-- List your configured allowed patterns: git config --get-all secrets.allowed
-- List your configured allowed patterns in .gitallowed at repository's root directory
-- Use --no-verify if this is a one-time false positive
-```
-
-Edit this README file, and make a change here, change status: `incomplete` to `complete`.
-
-`status: incomplete`
-
-
-Commit this change to the text file. You should now see the pre-commit hook kick in.
-It will warn you that a secret is present in the repository.
-
-We are now going to look at a tool that can do this on a much broader scale.
-
-
 ### Talisman 
 
-We've seen how AWS simple but effective tool can be used to create pre-commit hooks and catch 
-API keys being commited to the repository.
+The next tool we will look at is Talisman which can be used to setup pre-commit hooks to aid in security. 
 
-The next tool we will look at is Talisman. You can find it at the following GitHub repository:
+You can find it at the following GitHub repository:
 
 https://github.com/thoughtworks/talisman
 
@@ -452,7 +373,7 @@ Run the following command:
 echo "talisman -g pre-commit" >> .git/hooks/pre-commit
 ```
 
-Much like with the AWS tool, the pre-commit hook will now act as a blocker to commiting secrets to the code base.
+The pre-commit hook will now act as a blocker to commiting secrets to the code base.
 
 We can ignore false positives using the `.talismanrc` file. You can see an example in the root of this project. 
 
