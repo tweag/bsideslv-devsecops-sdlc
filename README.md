@@ -1,4 +1,4 @@
-![Bsides Logo 2024 Logo](bsides_lv_logo.png")
+![Bsides Logo 2024 Logo](bsides_lv_logo.png "BSides Logo")
 
 # DevSecOps and Securing your SDLC
 
