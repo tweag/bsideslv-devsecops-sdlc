@@ -1,17 +1,13 @@
 
-# Template Repository - Shifting Security Left a Hands On Workshop
+# DevSecOps and Securing your SDLC
 
-The following repository contains training material workshops on shifting security left.
+The following repository contains training material workshops on DevSecOps and Securing your SDLC.
 
-This workshop is held at venue `X` on `DATE` at `TIME`.
+This workshop is held at venue `BSides LV` on `Wednesday 8th August` at `3pm PST`.
 
 ## Workshop Outline
 
-*Shifting Security Left a Hands On Workshop* provides participants with an introduction to baking security into the software development process and leveraging DevSecOps tooling to support this. 
-
-Attendees will learn about setting up a local development environment which includes security tools such as IDE plugins. Students will then progress into learning how to use DevSecOps pipelines to detect security issues such as accidentally committed secrets.
-
-The workshop will then wrap up with tips on how to handle secure deployments and a look to what the future holds in this space.
+This workshop on DevSecOps and securing your SDLC provides BSides Las Vegas participants with a basic guide to using DevSecOps tooling including open source options, and those native to GitHub BSidesLV attendees will learn about setting up IDE plugins, pre-commit hooks and other techniques to harden their development environment. Attendees will then progress into building out CI/CD pipeline that use DevSecOps concepts such as secrets scanning, dependency analysis and Static Analysis Security Testing.
 
 ## Pre-setup Phase
 
@@ -23,7 +19,7 @@ Students will be able to sign up for a .edu account which comes with some added 
 
 Once your account is setup, you will need to `Fork` and `Clone` this repository.
 
-A full guide to setting up the tooling for this workshop can be found in the Part 1 README file.
+A full guide to setting up the tooling for this workshop can be found in the Part 1 README file. This workshop will focus on using GitHub Codespace.
 
 [Part 1 - Security within the development environment](https://github.com/tweag/dev-sec-ops-workshop/tree/main/part1#part-1---security-within-the-development-environment)
 
@@ -32,9 +28,9 @@ A full guide to setting up the tooling for this workshop can be found in the Par
 
 Attendees will learn to integrate security tools and pre-commit hooks into their development environment thus enhancing code security off the bat:
 
-1. 3rd party plugin integration. In this part of the talk we explore third-party tooling that can be integrated into the IDE to aid in linting and SAST. An example here includes the SonarLint plugin. We also look at CodeQL and GitHub Copilot [Part 1 - Module1: IDE Integration](https://github.com/tweag/dev-sec-ops-workshop/tree/main/part1#module-1-ide-integration)
+1. 3rd party plugin integration. In this part of the talk we explore third-party tooling that can be integrated into the IDE to aid in linting and SAST. An example here includes the SonarLint plugin. We also look at SonarLint and GitHub Copilot [Part 1 - Module1: IDE Integration](https://github.com/tweag/dev-sec-ops-workshop/tree/main/part1#module-1-ide-integration)
 
-2. Setting up pre-commit hooks to aid in security will be explored. This includes tools such as AWS Labs git-secrets and Talisman. [Part 1 - Module2: pre-commit Hooks](https://github.com/tweag/dev-sec-ops-workshop/tree/main/part1#module-2-pre-commit-hooks)
+2. Setting up pre-commit hooks to aid in security will be explored. This part of the workshop walks through using Talisman. [Part 1 - Module2: pre-commit Hooks](https://github.com/tweag/dev-sec-ops-workshop/tree/main/part1#module-2-pre-commit-hooks)
 
 3. Git ignores. Git ignore files are a great way of preventing config files which may contain secrets, and other undesirable files such as .zips accidentally being committed. In this portion of the talk we provide practical examples of using .gitignore to aid in security. [Part 1 - Module 3: Preventing accidental commits](https://github.com/tweag/dev-sec-ops-workshop/tree/main/part1#module-3-preventing-accidental-commits)
 
