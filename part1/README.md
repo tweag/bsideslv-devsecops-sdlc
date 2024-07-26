@@ -19,18 +19,22 @@ A number of technologies are used during this part of the workshop including:
 
 7. BFG repo-cleaner: https://rtyley.github.io/bfg-repo-cleaner/ 
 
-These can be downloaded/setup in advance of completing the workshop, or as you go. Some tools are automatically instaleld into Codespace
+We have provided setup scripts for using the Codespace during the workshop. This avoids the issues with having to install packages locally on your laptop and battle configuration settings. You can also use VS Code with CodeSpaces, more info on this can be found here:
 
-The first account you will need if you have not created it already is a GitHub one. Use the link above to sign up.
+https://docs.github.com/en/codespaces/developing-in-a-codespace/using-github-codespaces-in-visual-studio-code
+
+The first account you will need if you have not created it already is a GitHub one. You can create an account here: https://github.com
 
 Once this created, you can now fork this repository.
 
-https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo
+## Codespaces Setup
+Navigate to the Code tab in your forked repository.
 
-Next we can create a new Codespace from the `main` branch. 
+Next, select the green Code button which will dispaly a drop down.
 
-With the code now located on your local machine, you are ready to start.
+Select the Codespaces tab.
 
+Select the Create codesapce on main button.
 
 ## Module 1: IDE Integration 
 
