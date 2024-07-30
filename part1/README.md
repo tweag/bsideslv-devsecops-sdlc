@@ -119,129 +119,35 @@ We're now going to switch over to using another tool that can aid in detecting s
 
 For the purposes of the workshop we will demo and walk through this. However after the workshop if you wish to try this tool for yourself we have provided instructions on how to install it.
 
-#### Post-workshop CodeQL setup
+#### Post-workshop Codespace Workspace setup
 
-The first step is to install the CLI tools prior to adding in the VS Code plugin.
-
-GitHub provides instructions here:
-
-https://docs.github.com/en/code-security/codeql-cli/getting-started-with-the-codeql-cli/setting-up-the-codeql-cli
-
-And we will provide a quick overview here on what you need to do, to get the CLI installed and setup.
-
-1. Head over to the CodeQL Bundle release page: https://github.com/github/codeql-action/releases
-
-2. Download the latest version of the bundle for your OS. These bundles are listed under `Assets`
-
-3. Unzip the bundle.
-
-4. Once the zip is extracted the CodeQL CLI will be available for use. You may want to add this to your `PATH` so you can execute the CLI with a simple `codeql` command. You can read more about adding CodeQL to your `PATH` here: https://docs.github.com/en/code-security/codeql-cli/getting-started-with-the-codeql-cli/setting-up-the-codeql-cli#2-extract-the-zip-archive  
-
-5. Test the codeql command, you should see something similar to:
-
-```console
-
-Create and query CodeQL databases, or work with the QL language.
-
-GitHub makes this program freely available for the analysis of open-source software and certain other uses, but it is not itself free software. Type codeql --license to see the license
-terms.
-
-      --license              Show the license terms for the CodeQL toolchain.
-Common options:
-  -h, --help                 Show this help text.
-  -v, --verbose              Incrementally increase the number of progress messages printed.
-  -q, --quiet                Incrementally decrease the number of progress messages printed.
-Some advanced options have been hidden; try --help -v for a fuller view.
-Commands:
-  query       Compile and execute QL code.
-  bqrs        Get information from .bqrs files.
-  database    Create, analyze and process CodeQL databases.
-  dataset     [Plumbing] Work with raw QL datasets.
-  test        Execute QL unit tests.
-  resolve     [Deep plumbing] Helper commands to resolve disk locations etc.
-  execute     [Deep plumbing] Low-level commands that need special JVM options.
-  version     Show the version of the CodeQL toolchain.
-  generate    Commands that generate useful output.
-  github      Commands useful for interacting with the GitHub API through CodeQL.
-  pack        Commands to manage QL packages.
-  diagnostic  [Experimental] Create, process, and export diagnostic information.
-```
-
-6. We can now test that codeql is correctly setup to generate a database. Use the following command:
-
-```console
-
-codeql resolve qlpacks
-```
-
-You should now see it output something similar to this example:
-
-```console
-
-codeql-csharp-consistency-queries (/workshop/qlpacks/codeql/csharp/ql/consistency-queries)
-codeql-csharp-tests (/workshop/qlpacks/codeql/csharp/ql/test)
-codeql-go-consistency-queries (/workshop/qlpacks/codeql/go/ql/consistency-queries)
-codeql-java-consistency-queries (/workshop/qlpacks/codeql/java/ql/consistency-queries)
-codeql-swift-tests (/workshop/qlpacks/codeql/swift/ql/test)
+We have provided example scripts you can use to generate a CodeQL database in your Codespace. First install the commandline:
 
 ```
-Now we have the commandline tool in place we are going to generate a database off of our vulnerable code. This database is an Abstract Syntax Tree representation of the code combined with some metadata about the code base. GitHub provides and overview on the database and using it in VS Code here: https://codeql.github.com/docs/codeql-for-visual-studio-code/exploring-the-structure-of-your-source-code/
-
-
-```console
-
-./codeql database create --language=javascript-typescript --source-root ../dev-sec-ops-workshop/part1 ../javascript-database
-
+./codeqlinstall script
 ```
 
-This will output:
-
-```console
-
-Initializing database at /workshop/javascript-database.
-Running build command: []
-[2024-03-22 09:20:15] [build-stdout] Single-threaded extraction.
-[2024-03-22 09:20:15] [build-stdout] Extracting /workshop/dev-sec-ops-workshop/part1/src/vuln.js
-[2024-03-22 09:20:15] [build-stdout] Done extracting /workshop/dev-sec-ops-workshop/part1/src/vuln.js (327 ms)
-[2024-03-22 09:20:15] [build-stderr] No externs trap cache found
-
-...
-
-Finalizing database at /workshop/javascript-database.
-Running TRAP import for CodeQL database at /workshop/javascript-database...
-Importing TRAP files
-Merging relations
-Finished writing database (relations: 13.32 MiB; string pool: 4.78 MiB).
-TRAP import complete (4s).
-Finished zipping source archive (247.38 KiB).
-Successfully created database at /workshop/javascript-database.
+Next generate the database:
 
 ```
-We now have a database generated from our code to work with. However before we can use it via the VS Code IDE we will need to install the plugin.
-
-You can find basic installation instructions for VS Code here:
-
-https://codeql.github.com/docs/codeql-for-visual-studio-code/setting-up-codeql-in-visual-studio-code/
-
-Once you have the plugin installed, we can setup a CodeQL workspace.
-
-In this workshop we will use the `Starter Workspace`. 
-
-We're going to need to get the CodeQL libraries and queries and can clone this from GitHub into a new directory on your machine:
-
-```console
-
-git clone --recursive git@github.com:github/vscode-codeql-starter.git
-
+./codeqldb.sh
 ```
 
-Once this has cloned we need to switch back to VS Code. 
+After you have run this we can fork the `vscode-codeql-starter` repository and run CodeQL as a Codespace from here.
 
-Once in the IDE select `File > Open Workspace from File`
+Navigate to https://github.com/github/vscode-codeql-starter
 
-Navigate to the folder where you checked out the `vscode-codeql-starter` repository and select the `vscode-codeql-starter.code-workspace` file. 
+Fork a copy of this repository. Then once forked, create a CodeSpace from the `main` branch.
 
-This will now load the workspace in visual studio. Save any changes if prompted to the `vuln.js` file you edited.
+Inside of the VS Code IDE in the left hand menu open the `Extensions` panel.
+
+In the `Search Extensions in Marketplace` field, enter `CodeQL`
+
+Click `Install` next to the `CodeQL` option.
+
+You are now ready to experiment with the queries.
+
+#### Working with queries
 
 In the left-hand menu you should now see a list of queries.
 
@@ -253,11 +159,9 @@ This demonstrates the format that CodeQL queries are written in. If you scroll d
 
 Under this folder you will find the configuration of JavaScript queries for detecting issues with the code base.
 
-In order to test the queries against our codebase we can now load our database via the `DATABASES` panel in VS Code.
+Once the plugin is installed you can open our your DB via the `Databases` menu, but scrolling down it e.g. `From a URL (as a zip file)`
 
-Select the `Choose Database from Folder` option, and select the database we created from the source code.
-
-![Part 1 - CodeQL DB](./img/codeqldb.png "CodeQL Database example")
+We are going to use an example of a pre-built database we created using the example script previously.
 
 You can filter the queries in the `QUERIES` panel to only display JavaScript ones, by selecting `JavaScript` from the `LANGUAGE` panel. This should make the query list easier to navigate.
 
