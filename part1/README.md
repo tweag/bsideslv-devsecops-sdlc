@@ -124,13 +124,13 @@ For the purposes of the workshop we will demo and walk through this. However aft
 We have provided example scripts you can use to generate a CodeQL database in your Codespace. First install the commandline:
 
 ```
-./codeqlinstall script
+sudo bash ./codeqlinstall script
 ```
 
 Next generate the database:
 
 ```
-./codeqldb.sh
+sudo bash ./codeqldb.sh
 ```
 
 After you have run this we can fork the `vscode-codeql-starter` repository and run CodeQL as a Codespace from here.
