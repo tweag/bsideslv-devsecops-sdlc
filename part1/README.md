@@ -113,7 +113,7 @@ That wraps up using SonarLint. You can use it to quickly detect parts of your co
 
 Let's take a look at an alernative tool to SonarLint which can also detect issues in the codebase. 
 
-### CodeQL
+### CodeQL - Demonstration 
 
 We're now going to switch over to using another tool that can aid in detecting security issues in our source code. This tool is called CodeQL.
 
