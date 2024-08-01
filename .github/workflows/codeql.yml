@@ -82,3 +82,7 @@ jobs:
       uses: github/codeql-action/analyze@v3
       with:
         category: "/language:${{matrix.language}}"
+
+    - name: Endor Labs Scan
+      uses: endorlabs/github-action@v1.1.4
+                
