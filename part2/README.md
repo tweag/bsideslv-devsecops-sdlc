@@ -515,6 +515,14 @@ SBOMs can be ingested into a variety of tools to demonstrate that the compositio
 
 You can find tools for working with SPDX format SBOMs at the spdx.org website https://tools.spdx.org/app/
 
+If you are interested, you can also sign up for a free trial of Endor Labs: https://www.endorlabs.com
+
+Their platform as an `SBOM Hub` feature for managing your SBOMs. Additionally it will enrich your SBOM with VEX data.
+
+
+![Part 2 - SBOM and Endor Labs](./img/endorlabs.png "SBOM and Endor Labs")
+
+
 Now you know how to generate an SBOM, you've reached the end of this module!
 
 
