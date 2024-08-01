@@ -1,4 +1,4 @@
-name: Endor Labs: Example Scan of OWASP Java
+name: "Endor Labs: Example Scan of OWASP Java"
 on: workflow_dispatch
 jobs:
   create_project_owasp:
