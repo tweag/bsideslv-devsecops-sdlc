@@ -8,6 +8,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+        with:
+          path: main
       - name: Scan JS with Endor Labs
         uses: endorlabs/github-action@main # This workflow uses the Endor Labs GitHub action to scan.
         with:
