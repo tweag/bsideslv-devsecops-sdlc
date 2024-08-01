@@ -85,4 +85,6 @@ jobs:
 
     - name: Endor Labs Scan
       uses: endorlabs/github-action@v1.1.4
+      with:
+          namespace: "moduscreate_pcl_sandbox"
                 
