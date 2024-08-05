@@ -117,9 +117,13 @@ Let's take a look at an alernative tool to SonarLint which can also detect issue
 
 We're now going to switch over to using another tool that can aid in detecting security issues in our source code. This tool is called CodeQL.
 
-For the purposes of the workshop we will demo and walk through this. However after the workshop if you wish to try this tool for yourself we have provided instructions on how to install it.
+For the purposes of the workshop, we will demo and walk through this within the provided GitHub Codespace. Note: This setup is for demonstration purposes only and should not be used in production environments or personal projects during the workshop.
+
 
 #### Post-workshop Codespace Workspace setup
+
+For those interested in exploring CodeQL further after the workshop, you can refer to the official CodeQL documentation for detailed installation and setup instructions. Please note that the CodeQL setup provided here is meant solely for demonstration within this workshop.
+
 
 We have provided example scripts you can use to generate a CodeQL database in your Codespace. First install the commandline:
 
