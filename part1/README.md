@@ -274,7 +274,13 @@ https://github.com/thoughtworks/talisman
 
 Talisman is capable of scanning git changesets to ensure secrets and other sensitive information is
 not added to the repository. This includes not only AWS API Keys, but SSH keys, tokens, passwords and similar.
- 
+
+Install in the code space by entering:
+
+```console
+bash -c "$(curl --silent https://raw.githubusercontent.com/thoughtworks/talisman/main/install.sh)"
+```
+
 Open up the `README` file in the GitHub repository and follow the installation steps for your OS.
 
 Once installed we can configure a stand alone pre-commit hook for our repository.
