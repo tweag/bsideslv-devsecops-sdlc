@@ -288,7 +288,7 @@ Once installed we can configure a stand alone pre-commit hook for our repository
 Run the following command:
 
 ```console
-echo "talisman -g pre-commit" >> .git/hooks/pre-commit
+echo "talisman -g pre-commit" >> .git/hooks/pre-commit && chmod +x .git/hooks/pre-commit
 ```
 
 The pre-commit hook will now act as a blocker to commiting secrets to the code base.
