@@ -21,4 +21,4 @@ jobs:
           pr: false
           scan_secrets: true
           scan_dependencies: true
-          scan_path: 'bsideslv-devsecops-sdlc'
+          scan_path: '.'
