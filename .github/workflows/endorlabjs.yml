@@ -14,7 +14,7 @@ jobs:
       - name: Scan JS with Endor Labs
         uses: endorlabs/github-action@main # This workflow uses the Endor Labs GitHub action to scan.
         with:
-          namespace: 'moduscreate_pcl_sandbox'
+          namespace: 'bsideslv_demo'
           scan_summary_output_type: 'json'
           pr: false
           scan_secrets: true
