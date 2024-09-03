@@ -22,3 +22,4 @@ jobs:
           pr: false
           scan_secrets: true
           scan_dependencies: true
+          log_verbose: true
